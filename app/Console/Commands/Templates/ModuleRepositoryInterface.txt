@@ -1,0 +1,10 @@
+<?php
+namespace Modules\{moduleInterface}\src\Repositories;
+
+use App\Repositories\RepositoryInterface;
+
+interface {moduleInterface}RepositoryInterface extends RepositoryInterface
+{
+    //viet ham lay du lieu
+
+}
