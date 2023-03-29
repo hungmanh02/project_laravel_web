@@ -35,11 +35,12 @@ class CategoryController extends Controller
             return Carbon::parse($category->created_at)->format('d/m/Y H:i:s');
         })
         ->rawColumns(['edit', 'delete','link'])
-        ->toJson();
+        ->toArray();
     }
     public function create(){
         $pageTitle="Add categories";
-        return view('Category::add',compact('pageTitle'));
+        $categories=$this->categoryRepo->getAllCategories();
+        return view('Category::add',compact('pageTitle','categories'));
     }
     public function store(CategoryRequest $request){
         $this->categoryRepo->create([
@@ -56,7 +57,8 @@ class CategoryController extends Controller
         if(!$category){
             abort(404);
         }
-        return view('Category::edit',compact('category','pageTitle'));
+        $categories=$this->categoryRepo->getAllCategories();
+        return view('Category::edit',compact('category','pageTitle','categories'));
     }
     public function update(CategoryRequest $request,$category){
         $data=$request->except('_token'); // loại bỏ token

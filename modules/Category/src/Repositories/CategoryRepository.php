@@ -14,12 +14,12 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
 
         return Category::class;
     }
-    public function getCategories($limit)
+    public function getCategories()
     {
-        return $this->model->paginate($limit);
+        return $this->model->select(['id','name','slug','parent_id','created_at'])->latest();
     }
     //lấy dự sự dụng serve side
     public function getAllCategories(){
-        return $this->model->select(['id','name','slug','parent_id','created_at'])->latest();
+        return $this->getCategories()->get();
     }
 }

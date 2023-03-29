@@ -5,6 +5,6 @@ use App\Repositories\RepositoryInterface;
 
 interface CategoryRepositoryInterface extends RepositoryInterface
 {
-    public function getCategories($limit);
+    public function getCategories();
     public function getAllCategories();
 }
