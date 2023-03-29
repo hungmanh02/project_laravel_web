@@ -7,11 +7,11 @@
             if($category->parent_id == $parentId && $id!=$category->id){
                 echo '<option value="'.$category->id.'"';
                 if($old==$category->id){
-                    echo 'selected';
+                    echo ' selected';
                 }
                 echo '>'.$char.$category->name.'</option>';
                 unset($categories[$key]);
-                getCategories($categories,$category->id,$char.' |- ');
+                getCategories($categories,$old,$category->id,$char.'|_ ');
             }
         }
     }

@@ -37,6 +37,7 @@
                     {
                         processing: true,
                         serverSide: true,
+                        pageLength: 2,
                         ajax: "{{route('admin.categories.data')}}",
                         "columns": [
                             { "data": "name" },

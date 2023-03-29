@@ -27,7 +27,7 @@
                 <label for="">Cha</label>
                 <select name="parent_id" id="" class="form-select @error('parent_id') is-invalid @enderror">
                     <option value="0">Không</option>
-                    {{getCategories($categories,old('parent_id'))}}
+                    {{getCategories($categories, old('parent_id'))}}
                 </select>
                 @error('parent_id')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -36,7 +36,7 @@
         </div>
         <div class="col-12">
             <button type="submit" class="btn btn-primary">Lưu lại</button>
-            <a href="{{route('admin.users.index')}}" class="btn btn-danger">Hủy</a>
+            <a href="{{route('admin.categories.index')}}" class="btn btn-danger">Hủy</a>
         </div>
 
     </div>

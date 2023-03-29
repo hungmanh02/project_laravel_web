@@ -20,6 +20,6 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
     }
     //lấy dự sự dụng serve side
     public function getAllCategories(){
-        return $this->getCategories()->get();
+        return $this->getAll();
     }
 }
