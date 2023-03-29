@@ -20,22 +20,33 @@ class CategoryController extends Controller
         return view('Category::list',compact('pageTitle'));
     }
     public function data(){
-        $categories=$this->categoryRepo->getAllCategories();
-        return DataTables::of($categories)
-        ->addColumn('edit',function($category) {
-            return '<a href="'.route('admin.categories.edit',$category).'" class="btn btn-warning">Sửa</a>';
-        })
-        ->addColumn('delete',function($category) {
-            return '<a href="'.route('admin.categories.delete',$category).'" class="btn btn-danger delete-action">Xóa</a>';
-        })
-        ->addColumn('link',function($category) {
-            return '<a href="" class="btn btn-primary">Xem</a>';
-        })
-        ->editColumn('created_at', function($category) {
-            return Carbon::parse($category->created_at)->format('d/m/Y H:i:s');
-        })
+        $categories=$this->categoryRepo->getCategories();
+        $categories = DataTables::of($categories)
         ->rawColumns(['edit', 'delete','link'])
         ->toArray();
+        $categories['data'] = $this->getCategoriesTable($categories['data']);
+        // dd($categories);
+        return $categories;
+    }
+    public function getCategoriesTable($categories,$char='',&$result=[]){
+
+        if(!empty($categories)){
+            foreach($categories as $category){
+                $row=$category;
+                $row['name']=$char.$row['name'];
+                $row['edit']='<a href="'.route('admin.categories.edit',$category['id']).'" class="btn btn-warning">Sửa</a>';
+                $row['delete']='<a href="'.route('admin.categories.delete',$category['id']).'" class="btn btn-danger delete-action">Xóa</a>';
+                $row['link']='<a href="" class="btn btn-primary">Xem</a>';
+                $row['created_at']=Carbon::parse($category['created_at'])->format('d/m/Y H:i:s');
+                unset($row['sub_categories']);
+                unset($row['updated_at']);
+                $result[]=$row;
+                if(!empty($category['sub_categories'])){
+                    $this->getCategoriesTable($category['sub_categories'],$char.'- ',$result);
+                }
+            }
+        }
+        return $result;
     }
     public function create(){
         $pageTitle="Add categories";
