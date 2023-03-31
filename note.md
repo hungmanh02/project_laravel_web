@@ -56,11 +56,11 @@
 - slug => varchar (255)
 - detail => text
 - teacher_id => int
-- thumbnail => varchar(255)
+- thumbnail => varchar(255) ->để cuối
 - price => float
 - sale_price => float
 - code => varchar (100)
-- durations =>float
+- durations =>float -> tính tự động từng video của khóa học
 - is_document => tinyint
 - supports => text
 - status => tinyint
@@ -378,6 +378,11 @@ khi onchange="" thay đổi
 
 
 
+
+### courses
+- tạo migrations
+- tạo controller
+- 
 
 
 

@@ -7,7 +7,7 @@
         <div class="col-6">
             <div class="mb-3">
                 <label for="">Tên</label>
-                <input type="text" name="name" value="{{ old('name')}}" class="form-control @error('name') is-invalid @enderror" id="" placeholder="Tên...">
+                <input type="text" name="name" value="{{ old('name')}}" class="form-control title @error('name') is-invalid @enderror" id="" placeholder="Tên...">
                 @error('name')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -15,31 +15,82 @@
         </div>
         <div class="col-6">
             <div class="mb-3">
-                <label for="">Email</label>
-                <input type="email" name="email" value="{{old('email')}}" class="form-control @error('email') is-invalid @enderror" id="" placeholder="Email...">
-                @error('email')
+                <label for="">Tên</label>
+                <input type="text" name="slug" value="{{ old('slug')}}" class="form-control slug @error('slug') is-invalid @enderror" id="" placeholder="Slug...">
+                @error('slug')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
         </div>
         <div class="col-6">
             <div class="mb-3">
-                <label for="">Nhóm</label>
-                <select name="group_id" id="" class="form-select @error('group_id') is-invalid @enderror">
+                <label for="">Chọn giảng viên</label>
+                <select name="teacher_id" id="" class="form-select @error('teacher_id') is-invalid @enderror">
                     <option value="0">Chọn nhóm</option>
-                    <option value="1">Administrater</option>
-                    <option value="2">Sales</option>
+                    <option value="1">Hoàng An</option>
+                    <option value="2">Hoàng Tâm</option>
                 </select>
-                @error('group_id')
+                @error('teacher_id')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
         </div>
         <div class="col-6">
             <div class="mb-3">
-                <label for="">Mật khẩu</label>
-                <input type="password" name="password"  class="form-control @error('password') is-invalid @enderror" id="">
-                @error('password')
+                <label for="">Mã khóa học</label>
+                <input type="text" name="code" value="{{old('code')}}" class="form-control @error('code') is-invalid @enderror" id="" placeholder="Mã khóa học...">
+                @error('code')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="mb-3">
+                <label for="">Giá khóa học</label>
+                <input type="number" name="price" value="{{old('price')}}" class="form-control @error('price') is-invalid @enderror" id="" placeholder="Giá khóa học...">
+                @error('price')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="mb-3">
+                <label for="">Giá khuyến mãi</label>
+                <input type="number" name="sale_price" value="{{old('sale_price')}}" class="form-control @error('sale_price') is-invalid @enderror" id="" placeholder="Giá khuyến mãi...">
+                @error('sale_price')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="mb-3">
+                <label for="">Tài liệu đính kèm</label>
+                <select name="is_document" id="" class="form-select @error('is_document') is-invalid @enderror">
+                    <option value="0">Không</option>
+                    <option value="1">Có</option>
+                </select>
+                @error('is_document')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="mb-3">
+                <label for="">Trạng thái</label>
+                <select name="status" id="" class="form-select @error('status') is-invalid @enderror">
+                    <option value="0">Chưa ra mắt</option>
+                    <option value="1">Đã ra mắt</option>
+                </select>
+                @error('status')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="mb-3">
+                <label for="">Hỗ trợ</label>
+                <textarea name="supports" class="form-control @error('supports') is-invalid @enderror" placeholder="Hỗ trợ ..."></textarea>
+                @error('supports')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
