@@ -26,7 +26,7 @@ class CoursesController extends Controller
     }
     public function data(){
         $courses=$this->coursesRepo->getAllCourses();
-        return DataTables::of($courses)
+        $courses= DataTables::of($courses)
         ->addColumn('edit',function($course) {
             return '<a href="'.route('admin.courses.edit',$course).'" class="btn btn-warning">Sửa</a>';
         })
@@ -38,6 +38,7 @@ class CoursesController extends Controller
         })
         ->rawColumns(['edit', 'delete'])
         ->toJson();
+        return $courses;
 
     }
     public function create()
@@ -62,7 +63,7 @@ class CoursesController extends Controller
         // $pageTitle="Sửa khóa học";
         return view('Courses::edit',compact('course','pageTitle'));
     }
-    public function update(UserRequest $request, $course){
+    public function update(CoursesRequest $request, $course){
         $data=$request->except('_token'); // loại bỏ token và password
         // if($request->password){
         //     $data['password']=Hash::make($request->password);

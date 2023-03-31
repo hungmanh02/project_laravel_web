@@ -1,5 +1,5 @@
 @extends('layouts.backend')
-@section('title','Quản lý người dùng')
+@section('title','Quản lý khóa học')
 @section('content')
 <p><a href="{{route('admin.courses.create')}}" class="btn btn-primary">Thêm mới</a></p>
 @if (session('msg'))
@@ -9,8 +9,8 @@
     <thead>
         <tr>
             <th>Tên</th>
-            <th>Email</th>
-            <th>Nhóm</th>
+            <th>Giá</th>
+            <th>Trạng thái</th>
             <th>Thời gian</th>
             <th>Sửa</th>
             <th>Xóa</th>
@@ -19,8 +19,8 @@
     <tfoot>
         <tr>
             <th>Tên</th>
-            <th>Email</th>
-            <th>Nhóm</th>
+            <th>Giá</th>
+            <th>Trạng thái</th>
             <th>Thời gian</th>
             <th>Sửa</th>
             <th>Xóa</th>
@@ -39,8 +39,8 @@
                         ajax: "{{route('admin.courses.data')}}",
                         "columns": [
                             { "data": "name" },
-                            { "data": "email" },
-                            { "data": "group_id" },
+                            { "data": "price" },
+                            { "data": "status" },
                             { "data": "created_at" },
                             { "data": "edit" },
                             { "data": "delete" },

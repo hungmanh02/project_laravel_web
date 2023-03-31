@@ -1,5 +1,5 @@
 @extends('layouts.backend')
-@section('title','Sửa người dùng')
+@section('title','Sửa khóa học')
 @section('content')
 @if (session('msg'))
 <div class="alert alert-success">{{ session('msg')}}</div>
