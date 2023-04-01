@@ -382,7 +382,7 @@ khi onchange="" thay đổi
 ### courses
 - tạo migrations
 - tạo controller
-- 
+- tích hợp ckeditor
 
 
 

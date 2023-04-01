@@ -86,10 +86,44 @@
                 @enderror
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-12">
+            <div class="mb-3">
+                <div class="row align-items-end">
+                    <div class="col-7">
+                        <label for="">Ảnh đại diện</label>
+                        <input type="text" name="thumbnail" value="{{old('thumbnail')}}" class="form-control @error('thumbnail') is-invalid @enderror" id=""
+                        placeholder="Ảnh đại diện...">
+                        @error('thumbnail')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="col-2 d-grid">
+                        <button type="button" class="btn btn-primary">
+                            <i class="fa fa-save"></i> Chọn ảnh
+                        </button>
+                    </div>
+                    <div class="col-3">
+                        <img src="https://cdn.tgdd.vn/Files/2016/02/25/792452/chup-anh-hoang-hon-bang-smartphone_800x450.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-12">
+            <div class="mb-3">
+                <label for="">Nội dung</label>
+                <textarea name="detail" class="form-control @error('detail') is-invalid @enderror"
+                 placeholder="Nội dung ..."></textarea>
+                @error('detail')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
+        <div class="col-12">
             <div class="mb-3">
                 <label for="">Hỗ trợ</label>
-                <textarea name="supports" class="form-control @error('supports') is-invalid @enderror" placeholder="Hỗ trợ ..."></textarea>
+                <textarea name="supports" class="form-control @error('supports') is-invalid @enderror"
+                 placeholder="Hỗ trợ ..."></textarea>
                 @error('supports')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -103,4 +137,13 @@
     </div>
 
 </form>
+@endsection
+@section('stylesheets')
+
+    <style>
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
 @endsection
