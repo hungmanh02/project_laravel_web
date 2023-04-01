@@ -383,8 +383,52 @@ khi onchange="" thay đổi
 - tạo migrations
 - tạo controller
 - tích hợp ckeditor
+- tích hợp filemanager
+----
+composer require unisharp/laravel-filemanager
+ php artisan vendor:publish --tag=lfm_config
+ php artisan vendor:publish --tag=lfm_public
+ php artisan storage:link
+ khi cài xong thì vào gile .env
+ thay APP_URL http://127.0.0.1:8000
 
+  Thêm vào trong file ckeditor
+  var options = {
+    filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+    filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+    filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+    filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+  };
 
+  <div class="mb-3">
+                <div class="row align-items-end">
+                    <div class="col-7">
+                        <label for="">Ảnh đại diện</label>
+                        <input type="text" id="thumbnail" name="thumbnail" value="{{old('thumbnail')}}" class="form-control @error('thumbnail') is-invalid @enderror" id=""
+                        placeholder="Ảnh đại diện...">
+                        @error('thumbnail')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="col-2 d-grid">
+                        <button type="button"  class="btn btn-primary" id="lfm" data-input="thumbnail"
+                        data-preview="holder">
+                            <i class="fa fa-save"></i> Chọn ảnh
+                        </button>
+                    </div>
+                    <div class="col-3">
+                        <div id="holder">
+                        </div>
+                    </div>
+                </div>
+            </div>
+     chỉnh sửa thêm file lfm.php trong configs
+     chỉnh filesystems.php trong configs để bỏ tên miền ảo để lưu tên file
+routes.php
+
+Route::group(['prefix' => 'filemanager', 'middleware' => ['web']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
 
 
 

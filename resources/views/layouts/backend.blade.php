@@ -32,6 +32,11 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://cdn.datatables.net/v/bs5/dt-1.13.4/datatables.min.js"></script>
+        <script src="{{ asset('backend/plugins/ckeditor/ckeditor.js') }}"></script>
+        <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
+        <script>
+             $('#lfm').filemanager('image');
+          </script>
         @yield('scripts')
     </body>
 </html>
