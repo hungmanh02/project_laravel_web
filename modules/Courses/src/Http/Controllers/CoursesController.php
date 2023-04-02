@@ -76,18 +76,21 @@ class CoursesController extends Controller
         return redirect()->route('admin.courses.index')->with('msg',__('Courses::messages.create.success'));
     }
     public function edit($course){
-        // $course=$this->coursesRepo->find($course);
-        // if(!$course){
-        //     abort(404);
-        // }
-        // $pageTitle="Sửa khóa học";
+        $course=$this->coursesRepo->find($course);
+        if(!$course){
+            abort(404);
+        }
+        $pageTitle="Sửa khóa học";
         return view('Courses::edit',compact('course','pageTitle'));
     }
     public function update(CoursesRequest $request, $course){
-        $data=$request->except('_token'); // loại bỏ token và password
-        // if($request->password){
-        //     $data['password']=Hash::make($request->password);
-        // }
+        $data=$request->except('_token'); // loại bỏ token
+        if(!$data['sale_price']){
+            $data['sale_price']=0;
+        }
+        if(!$data['price']){
+            $data['price']=0;
+        }
         $this->coursesRepo->update($course,$data);
         return back()->with('msg',__('Courses::messages.update.success'));
     }
