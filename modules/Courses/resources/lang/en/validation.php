@@ -9,8 +9,15 @@
     'select'=>':attribute bắt buộc phải chọn',
     'attributes'=>[
         'name' =>'Tên',
-        'email' =>'email',
+        'slug' =>'Slug',
         'password'=>'Mật khẩu',
-        'group_id' =>'Nhóm'
+        'group_id' =>'Nhóm',
+        'teacher_id'=>'Giảng viên',
+        'code'=>'Mã khóa học',
+        'thumbnail'=>'Ảnh đại diện',
+        'is_document'=>'Tài liệu đính kèm',
+        'supports'=>'Hỗ trợ',
+        'status'=>'Trạng thái',
+        'detail'=>'Nội dung',
     ]
  ];

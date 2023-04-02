@@ -36,7 +36,25 @@ class CoursesController extends Controller
         ->editColumn('created_at', function($course) {
             return Carbon::parse($course->created_at)->format('d/m/Y H:i:s');
         })
-        ->rawColumns(['edit', 'delete'])
+        ->editColumn('status', function($course) {
+            return $course->status==1 ? '<button class="btn btn-success">Đã ra mắt</button>': '<button class="btn btn-warning">Chưa ra mắt</button>';
+        })
+        ->editColumn('price', function($course) {
+            if($course->price){
+                if($course->sale_price){
+            $price= number_format($course->sale_price,0, '.',',').'đ';
+
+                }else{
+
+                    $price= number_format($course->price,0, '.',',').'đ';
+                }
+            }else{
+                $price="Miễn phí";
+            }
+
+            return $price;
+        })
+        ->rawColumns(['edit', 'delete','status'])
         ->toJson();
         return $courses;
 
@@ -47,12 +65,14 @@ class CoursesController extends Controller
         return view('Courses::add',compact('pageTitle'));
     }
     public function store(CoursesRequest $request){
-        // $this->coursesRepo->create([
-        //     'name'=>$request->name,
-        //     // 'email'=>$request->email,
-        //     // 'group_id'=>$request->group_id,
-        //     // 'password'=>Hash::make($request->password),
-        // ]);
+        $courses=$request->except(['_token']);
+        if(!$courses['sale_price']){
+            $courses['sale_price']=0;
+        }
+        if(!$courses['price']){
+            $courses['price']=0;
+        }
+        $this->coursesRepo->create($courses);
         return redirect()->route('admin.courses.index')->with('msg',__('Courses::messages.create.success'));
     }
     public function edit($course){

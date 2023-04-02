@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('code',100)->nullable;
             $table->float('durations')->default(0);
             $table->boolean('is_document')->default(0);
-            $table->text('support')->nullable;
+            $table->text('supports')->nullable;
             $table->boolean('status')->default(0);
             $table->timestamps();
         });

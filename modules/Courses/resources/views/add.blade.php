@@ -66,8 +66,8 @@
             <div class="mb-3">
                 <label for="">Tài liệu đính kèm</label>
                 <select name="is_document" id="" class="form-select @error('is_document') is-invalid @enderror">
-                    <option value="0">Không</option>
-                    <option value="1">Có</option>
+                    <option value="0" {{ old('is_document')==0 ? 'selected':false;}}>Không</option>
+                    <option value="1" {{ old('is_document')==1 ? 'selected':false;}}>Có</option>
                 </select>
                 @error('is_document')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -78,8 +78,8 @@
             <div class="mb-3">
                 <label for="">Trạng thái</label>
                 <select name="status" id="" class="form-select @error('status') is-invalid @enderror">
-                    <option value="0">Chưa ra mắt</option>
-                    <option value="1">Đã ra mắt</option>
+                    <option value="0" {{ old('status')==0 ? 'selected':false;}}>Chưa ra mắt</option>
+                    <option value="1" {{ old('status')==1 ? 'selected':false;}}>Đã ra mắt</option>
                 </select>
                 @error('status')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -105,6 +105,9 @@
                     </div>
                     <div class="col-3">
                         <div id="holder">
+                            @if (old('thumbnail'))
+                            <img src="{{old('thumbnail')}}" alt="">
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -115,7 +118,9 @@
             <div class="mb-3">
                 <label for="">Nội dung</label>
                 <textarea name="detail" class="form-control ckeditor @error('detail') is-invalid @enderror"
-                 placeholder="Nội dung ..."></textarea>
+                 placeholder="Nội dung ...">
+                 {{ old('detail')}}
+                </textarea>
                 @error('detail')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -125,10 +130,13 @@
             <div class="mb-3">
                 <label for="">Hỗ trợ</label>
                 <textarea name="supports" class="form-control  ckeditor @error('supports') is-invalid @enderror"
-                 placeholder="Hỗ trợ ..."></textarea>
-                @error('supports')
-                    <div class="invalid-feedback">{{ $message }}</div>
+                 placeholder="Hỗ trợ ...">
+                 {{ old('supports')}}
+                </textarea>
+            @error('supports')
+                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
+
             </div>
         </div>
         <div class="col-12">

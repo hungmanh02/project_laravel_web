@@ -430,6 +430,9 @@ Route::group(['prefix' => 'filemanager', 'middleware' => ['web']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
+### viết formRequest và validation
+-
+
 
 
 
