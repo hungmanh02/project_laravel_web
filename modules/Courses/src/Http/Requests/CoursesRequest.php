@@ -38,6 +38,7 @@ class CoursesRequest extends FormRequest
                     $fail(__('Courses::validation.select'));
                 }
             }],
+            'categories'=>'required',
         ];
         return $rules;
     }

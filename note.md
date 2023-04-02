@@ -431,7 +431,16 @@ Route::group(['prefix' => 'filemanager', 'middleware' => ['web']], function () {
 });
 
 ### viết formRequest và validation
--
+### viết function create
+### viết sửa delete courses
+
+### viết chương trình relationship courses với categories
+- tạo migration
+- tạo model CourseCategory.php
+- thiết lập relationship cho 2 bảng
+- tạo danh sách hiện thi các chuyên mục
+- copy function helper để sử dụng lại để làm ckeckbox
+- thêm name vào value input trong function và thêm categories required
 
 
 

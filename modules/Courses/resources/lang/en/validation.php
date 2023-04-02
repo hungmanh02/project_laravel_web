@@ -19,5 +19,6 @@
         'supports'=>'Hỗ trợ',
         'status'=>'Trạng thái',
         'detail'=>'Nội dung',
+        'categories'=>"Chuyên mục",
     ]
  ];

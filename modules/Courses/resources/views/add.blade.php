@@ -140,6 +140,17 @@
             </div>
         </div>
         <div class="col-12">
+            <div class="mb-3">
+                <label for="">Chuyên mục</label>
+                <div class="list-categories">
+                    {{getCategoriesCheckbox($categories)}}
+                </div>
+                    @error('categories')
+                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                    @enderror
+            </div>
+        </div>
+        <div class="col-12">
             <button type="submit" class="btn btn-primary">Lưu lại</button>
             <a href="{{route('admin.courses.index')}}" class="btn btn-danger">Hủy</a>
         </div>
@@ -157,6 +168,10 @@
         }
         #holder img{
             width: 100% !important;
+        }
+        .list-categories{
+            max-height: 200px;
+            overflow: auto;
         }
     </style>
 @endsection

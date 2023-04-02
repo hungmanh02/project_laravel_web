@@ -4,6 +4,7 @@ namespace Modules\Courses\src\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
+use Modules\Category\src\Repositories\CategoryRepository;
 use Modules\Courses\src\Http\Requests\CoursesRequest;
 use Modules\Courses\src\Repositories\CoursesRepository;
 use Yajra\DataTables\Facades\DataTables;
@@ -12,10 +13,12 @@ class CoursesController extends Controller
 {
 
     protected $coursesRepo;
+    protected $categoryRepo;
 
-    public function __construct(CoursesRepository $coursesRepo)
+    public function __construct(CoursesRepository $coursesRepo,CategoryRepository $categoryRepo)
     {
         $this->coursesRepo=$coursesRepo;
+        $this->categoryRepo=$categoryRepo;
     }
 
     public function index()
@@ -62,7 +65,9 @@ class CoursesController extends Controller
     public function create()
     {
         $pageTitle="Thêm khóa học";
-        return view('Courses::add',compact('pageTitle'));
+        $categories=$this->categoryRepo->getAllCategories();
+        // dd($categories);
+        return view('Courses::add',compact('pageTitle','categories'));
     }
     public function store(CoursesRequest $request){
         $courses=$request->except(['_token']);
@@ -72,7 +77,14 @@ class CoursesController extends Controller
         if(!$courses['price']){
             $courses['price']=0;
         }
-        $this->coursesRepo->create($courses);
+        // dd($courses);
+        $course  = $this->coursesRepo->create($courses);
+        // dd($course);
+        $categories=[];
+        foreach($courses['categories'] as $category){
+            $categories[$category]=['created_at'=>Carbon::now()->format('Y-m-d H:i:s'),'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')];
+        }
+        $this->coursesRepo->createCourseCategories($course);
         return redirect()->route('admin.courses.index')->with('msg',__('Courses::messages.create.success'));
     }
     public function edit($course){
