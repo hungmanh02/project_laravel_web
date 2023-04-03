@@ -23,7 +23,7 @@ class CoursesRepository extends BaseRepository implements CoursesRepositoryInter
         return $this->model->select(['id','name','price','sale_price','status','created_at'])->latest();
     }
     public function createCourseCategories($course,$data=[]){
-        // dd($course->categories());
-      $course->categories()->attach([$data]);
+        $course->categories()->attach($data);
+        // dd($course);
     }
 }

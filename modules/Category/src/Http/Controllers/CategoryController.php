@@ -54,7 +54,7 @@ class CategoryController extends Controller
         return view('Category::add',compact('pageTitle','categories'));
     }
     public function store(CategoryRequest $request){
-        $this->categoryRepo->create([
+        $this->categoryRepo->createModule([
             'name'=>$request->name,
             'slug'=>$request->slug,
             'parent_id'=>$request->parent_id,

@@ -77,14 +77,31 @@ class CoursesController extends Controller
         if(!$courses['price']){
             $courses['price']=0;
         }
-        // dd($courses);
-        $course  = $this->coursesRepo->create($courses);
-        // dd($course);
+        // $courses=$this->coursesRepo->createModule([
+        //     'name'=>$request->name,
+        //     'slug'=>$request->slug,
+        //     'detail'=>$request->detail,
+        //     'teacher_id' =>$request->teacher_id,
+        //     'thumbnail' =>$request->thumbnail,
+        //     'code' =>$request->code,
+        //     'support'=>$request->supports,
+        //     'price'=>$request->price?$request->price:0,
+        //     'sale_price'=>$request->sale_price?$request->sale_price:0,
+
+        // ]);
+               $course=$this->coursesRepo->createModule($courses);
+            //    print_r($course);
+        // $courses=$request->all();
         $categories=[];
         foreach($courses['categories'] as $category){
-            $categories[$category]=['created_at'=>Carbon::now()->format('Y-m-d H:i:s'),'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')];
-        }
-        $this->coursesRepo->createCourseCategories($course);
+                $categories[$category]=[
+                        'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
+                        'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
+                    ];
+                }
+        //         // dd($courses);
+        //         return $course;
+        $this->coursesRepo->createCourseCategories($course,$categories);
         return redirect()->route('admin.courses.index')->with('msg',__('Courses::messages.create.success'));
     }
     public function edit($course){

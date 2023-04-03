@@ -133,7 +133,7 @@
                  placeholder="Hỗ trợ ...">
                  {{ old('supports')}}
                 </textarea>
-            @error('supports')
+                @error('supports')
                  <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
 

@@ -7,7 +7,7 @@ interface RepositoryInterface
 
     public function find($id);
 
-    public function create($attributes=[]);
+    public function createModule($attributes=[]);
 
     public function update($id,$attributes=[]);
 

@@ -38,7 +38,7 @@ abstract  class BaseRepository implements RepositoryInterface
         return $result;
     }
 
-    public function create($attributes=[])
+    public function createModule($attributes=[])
     {
         return $this->model->create($attributes);
     }

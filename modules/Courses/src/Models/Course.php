@@ -10,15 +10,15 @@ class Course extends Model
 {
     use HasFactory;
     // những trường cần lấy
-    // protected $fillable = [
-    //     'options->enabled',
-    // ];
-    protected $guarded = [];// lấy toàn bộ
+    protected $fillable = [
+        'id', 'name', 'slug', 'detail', 'teacher_id', 'thumbnail', 'price', 'sale_price', 'code', 'durations', 'is_document', 'supports', 'status'
+    ];
+    // protected $guarded = [];// lấy toàn bộ
 
     public function categories(){
-        $this->belongsToMany(Category::class,'categories_courses');
+        return $this->belongsToMany(Category::class,'categories_courses');
     }
-    // public function courses(){
-    //     $this->belongsToMany(Course::class);
-    // }
+    protected $casts = [
+        'categories' => 'array'
+    ];
 }
