@@ -110,7 +110,8 @@ class CoursesController extends Controller
             abort(404);
         }
         $pageTitle="Sửa khóa học";
-        return view('Courses::edit',compact('course','pageTitle'));
+        $categories=$this->categoryRepo->getAllCategories();
+        return view('Courses::edit',compact('course','pageTitle','categories'));
     }
     public function update(CoursesRequest $request, $course){
         $data=$request->except('_token'); // loại bỏ token
