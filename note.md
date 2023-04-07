@@ -40,7 +40,7 @@
 ## Phân tích Database
 
 
-1. Table categories => Quản lý danh mục
+1. Table categories => Quản lý danh mục (đã tạo)
 
 - id => int
 - name => varchar(200)
@@ -49,7 +49,7 @@
 - created_at => timestamp
 - updated_at => timestamp
 
-2. Table courses => Quản lý khóa học
+2. Table courses => Quản lý khóa học (đã tạo)
 
 - id => int
 - name => varchar (255)
@@ -83,7 +83,7 @@
 - created_at => timestamp
 - updated_at => timestamp
 
-4. Table category_courses => Trung gian liên kết giữa danh mục và khóa học
+4. Table category_courses => Trung gian liên kết giữa danh mục và khóa học (đã tạo)
 
 
 - id => int
@@ -190,7 +190,7 @@
 - created_at => timestamp
 - updated_at => timestamp
 
-15.  Table users => Quản trị hệ thống
+15.  Table users => Quản trị hệ thống (đã tạo)
 
 - id => int
 - name => varchar(100)
