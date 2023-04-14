@@ -14,6 +14,7 @@
             <th>Kinh nghiệm</th>
             <th>hình ảnh</th>
             <th>thời gian</th>
+            <th>Sửa</th>
             <th>Xóa</th>
         </tr>
     </thead>
@@ -25,6 +26,7 @@
             <th>Kinh nghiệm</th>
             <th>hình ảnh</th>
             <th>thời gian</th>
+            <th>Sửa</th>
             <th>Xóa</th>
         </tr>
     </tfoot>
