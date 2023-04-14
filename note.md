@@ -92,8 +92,7 @@
 - created_at => timestamp
 - updated_at => timestamp
 
-5. Table teacher => Giảng viên
-
+5. Table teachers => Giảng viên
 
 - id => int
 - name => varchar(100)

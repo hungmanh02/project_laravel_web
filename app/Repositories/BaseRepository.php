@@ -13,7 +13,7 @@ abstract  class BaseRepository implements RepositoryInterface
 
     public function __construct()
     {
-        $this->setModel();
+        return $this->setModel();
     }
 
     //lấy model tương ứng
