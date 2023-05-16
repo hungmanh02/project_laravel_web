@@ -77,56 +77,53 @@ class CoursesController extends Controller
         if(!$courses['price']){
             $courses['price']=0;
         }
-        // $courses=$this->coursesRepo->createModule([
-        //     'name'=>$request->name,
-        //     'slug'=>$request->slug,
-        //     'detail'=>$request->detail,
-        //     'teacher_id' =>$request->teacher_id,
-        //     'thumbnail' =>$request->thumbnail,
-        //     'code' =>$request->code,
-        //     'support'=>$request->supports,
-        //     'price'=>$request->price?$request->price:0,
-        //     'sale_price'=>$request->sale_price?$request->sale_price:0,
 
-        // ]);
-               $course=$this->coursesRepo->createModule($courses);
-            //    print_r($course);
-        // $courses=$request->all();
-        $categories=[];
-        foreach($courses['categories'] as $category){
-                $categories[$category]=[
-                        'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
-                        'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
-                    ];
-                }
-        //         // dd($courses);
-        //         return $course;
+         $course=$this->coursesRepo->createModule($courses);
+
+        $categories= $this->getCategories($course);
+
         $this->coursesRepo->createCourseCategories($course,$categories);
         return redirect()->route('admin.courses.index')->with('msg',__('Courses::messages.create.success'));
     }
     public function edit($course){
         $course=$this->coursesRepo->find($course);
+        $categoryIds=$this->coursesRepo->getRelatedCategories($course);
+        // dd($categoryIds);
         if(!$course){
             abort(404);
         }
         $pageTitle="Sửa khóa học";
         $categories=$this->categoryRepo->getAllCategories();
-        return view('Courses::edit',compact('course','pageTitle','categories'));
+        return view('Courses::edit',compact('course','pageTitle','categories','categoryIds'));
     }
-    public function update(CoursesRequest $request, $course){
-        $data=$request->except('_token'); // loại bỏ token
-        if(!$data['sale_price']){
-            $data['sale_price']=0;
+    public function update(CoursesRequest $request, $id){
+        $course=$request->except('_token'); // loại bỏ token
+        if(!$course['sale_price']){
+            $course['sale_price']=0;
         }
-        if(!$data['price']){
-            $data['price']=0;
+        if(!$course['price']){
+            $course['price']=0;
         }
-        $this->coursesRepo->update($course,$data);
+        $this->coursesRepo->update($id,$course);
+        $categories= $this->getCategories($course);
+        $courses=$this->coursesRepo->find($id);
+        $this->coursesRepo->updateCourseCategories($courses,$categories);
         return back()->with('msg',__('Courses::messages.update.success'));
     }
     public function delete($course){
         $this->coursesRepo->delete($course);
         return back()->with('msg',__('Courses::messages.delete.success'));
+    }
+    public function getCategories($course)
+    {
+        $categories=[];
+        foreach($course['categories'] as $category){
+                $categories[$category]=[
+                        'created_at'=>Carbon::now()->format('Y-m-d H:i:s'),
+                        'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
+                    ];
+                }
+        return $categories;
     }
 
 

@@ -26,4 +26,12 @@ class CoursesRepository extends BaseRepository implements CoursesRepositoryInter
         $course->categories()->attach($data);
         // dd($course);
     }
+    public function updateCourseCategories($course,$data=[]){
+        $course->categories()->sync($data);
+    }
+    public function getRelatedCategories($course){
+        $categoryIds=$course->categories()->allRelatedIds()->toArray();
+        // dd($categoryIds); chuyển thành 1 array
+        return $categoryIds;
+    }
 }

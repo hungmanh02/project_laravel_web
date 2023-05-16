@@ -92,10 +92,10 @@
         </div>
         <div class="col-12">
             <div class="mb-3">
-                <div class="row align-items-end">
+                <div class="row {{$errors->has('thumbnail')?'align-items-center':'align-items-end'}}">
                     <div class="col-7">
                         <label for="">Ảnh đại diện</label>
-                        <input type="text" id="thumbnail"  readonly name="thumbnail" value="{{old('thumbnail')?? $course->thumbnail}}" class="form-control @error('thumbnail') is-invalid @enderror" id=""
+                        <input type="text" id="thumbnail"  readonly name="thumbnail" value="{{old('thumbnail')?? $course->thumbnail}}" class="form-control {{$errors->has('thumbnail')? 'is-invalid':''}} id=""
                         placeholder="Ảnh đại diện...">
                         @error('thumbnail')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -147,7 +147,7 @@
             <div class="mb-3">
                 <label for="">Chuyên mục</label>
                 <div class="list-categories">
-                    {{getCategoriesCheckbox($categories)}}
+                    {{getCategoriesCheckbox($categories,old('categories') ?? $categoryIds)}}
                 </div>
                     @error('categories')
                         <div class="invalid-feedback d-block">{{ $message }}</div>

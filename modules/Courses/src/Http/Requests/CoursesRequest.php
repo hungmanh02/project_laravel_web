@@ -23,13 +23,17 @@ class CoursesRequest extends FormRequest
      */
     public function rules()
     {
-     $id=$this->route()->user;
+        $courseId=$this->route()->course;
+        $uniqueRule='unique:courses,code';
+        if($courseId){
+            $uniqueRule.=','.$courseId;
+        }
         $rules=[
             'name'=>'required|max:255',
             'slug'=>'required|max:255',
             'detail'=>'required',
             'thumbnail'=>'required|max:255',
-            'code'=>'required|max:255|unique:courses,code',
+            'code'=>'required|max:255|'.$uniqueRule,
             'is_document'=>'required|integer',
             'supports'=>'required',
             'status'=>'required|integer',
