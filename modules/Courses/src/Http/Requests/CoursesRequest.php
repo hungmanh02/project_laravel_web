@@ -29,7 +29,7 @@ class CoursesRequest extends FormRequest
             'slug'=>'required|max:255',
             'detail'=>'required',
             'thumbnail'=>'required|max:255',
-            'code'=>'required|max:255',
+            'code'=>'required|max:255|unique:courses,code',
             'is_document'=>'required|integer',
             'supports'=>'required',
             'status'=>'required|integer',
