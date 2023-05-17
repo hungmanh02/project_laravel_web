@@ -14,6 +14,6 @@ class TeachersRepository extends BaseRepository implements TeachersRepositoryInt
         return Teacher::class;
     }
     public function getAllTeachers(){
-        return $this->model->select(['id','name','slug','description','image','epx','created_at'])->latest();
+        return $this->model->select(['id','name','slug','epx','image','created_at'])->latest();
     }
 }

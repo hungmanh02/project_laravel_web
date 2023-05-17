@@ -1,18 +1,17 @@
 @extends('layouts.backend')
 @section('title',$pageTitle)
 @section('content')
-<p><a href="{{route('admin.courses.create')}}" class="btn btn-primary">Thêm mới</a></p>
+<p><a href="{{route('admin.teachers.create')}}" class="btn btn-primary">Thêm mới</a></p>
 @if (session('msg'))
 <div class="alert alert-success">{{ session('msg')}}</div>
 @endif
 <table id="datatable" class="table table-bordered">
     <thead>
         <tr>
+            <th>Hình ảnh</th>
             <th>Tên</th>
             <th>Link</th>
-            <th>Mô tả</th>
             <th>Kinh nghiệm</th>
-            <th>hình ảnh</th>
             <th>thời gian</th>
             <th>Sửa</th>
             <th>Xóa</th>
@@ -20,11 +19,10 @@
     </thead>
     <tfoot>
         <tr>
+            <th>Hình ảnh</th>
             <th>Tên</th>
             <th>Link</th>
-            <th>Mô tả</th>
             <th>Kinh nghiệm</th>
-            <th>hình ảnh</th>
             <th>thời gian</th>
             <th>Sửa</th>
             <th>Xóa</th>
@@ -42,11 +40,10 @@
                         serverSide: true,
                         ajax: "{{route('admin.teachers.data')}}",
                         "columns": [
+                            { "data": "image" },
                             { "data": "name" },
                             { "data": "slug" },
-                            { "data": "description" },
                             { "data": "epx" },
-                            { "data": "image" },
                             { "data": "created_at" },
                             { "data": "edit" },
                             { "data": "delete" },

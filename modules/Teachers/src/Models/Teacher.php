@@ -15,7 +15,7 @@ class Teacher extends Model
         'slug',
         'description',
         'image',
-        'epx'
+        'epx',
     ];
     // protected $guarded = [];// lấy toàn bộ
 

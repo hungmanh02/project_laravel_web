@@ -80,7 +80,7 @@ class CoursesController extends Controller
 
          $course=$this->coursesRepo->createModule($courses);
 
-        $categories= $this->getCategories($course);
+        $categories= $this->getCategories($courses);
 
         $this->coursesRepo->createCourseCategories($course,$categories);
         return redirect()->route('admin.courses.index')->with('msg',__('Courses::messages.create.success'));
@@ -110,8 +110,10 @@ class CoursesController extends Controller
         $this->coursesRepo->updateCourseCategories($courses,$categories);
         return back()->with('msg',__('Courses::messages.update.success'));
     }
-    public function delete($course){
-        $this->coursesRepo->delete($course);
+    public function delete($id){
+        $course=$this->coursesRepo->find($id);
+        $this->coursesRepo->deleteCourseCategories($course);
+        $this->coursesRepo->delete($id);
         return back()->with('msg',__('Courses::messages.delete.success'));
     }
     public function getCategories($course)
