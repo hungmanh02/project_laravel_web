@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 29, 2023 at 04:37 PM
+-- Generation Time: May 17, 2023 at 04:11 PM
 -- Server version: 8.0.31
 -- PHP Version: 8.1.13
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `categories`
@@ -53,7 +53,67 @@ INSERT INTO `categories` (`id`, `name`, `slug`, `parent_id`, `created_at`, `upda
 (9, 'Manh me', 'manh-me', 2, '2023-03-29 08:36:13', '2023-03-29 09:24:59'),
 (10, 'Manh ne', 'manh-ne', 9, '2023-03-29 08:36:26', '2023-03-29 08:36:26'),
 (11, 'update name', 'update-name', 2, '2023-03-29 09:19:44', '2023-03-29 09:19:44'),
-(12, 'asad', 'asad', 2, '2023-03-29 09:26:35', '2023-03-29 09:26:35');
+(12, 'asad', 'asad', 2, '2023-03-29 09:26:35', '2023-03-29 09:26:35'),
+(13, 'update name', 'update-name', 0, '2023-03-30 08:08:46', '2023-03-30 08:08:46');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories_courses`
+--
+
+DROP TABLE IF EXISTS `categories_courses`;
+CREATE TABLE IF NOT EXISTS `categories_courses` (
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `category_id` int UNSIGNED NOT NULL,
+  `course_id` int UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `categories_courses_category_id_foreign` (`category_id`),
+  KEY `categories_courses_course_id_foreign` (`course_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `categories_courses`
+--
+
+INSERT INTO `categories_courses` (`id`, `category_id`, `course_id`, `created_at`, `updated_at`) VALUES
+(15, 4, 8, '2023-05-17 07:00:05', '2023-05-17 07:00:05'),
+(14, 6, 8, '2023-05-17 07:00:05', '2023-05-17 07:00:05');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `courses`
+--
+
+DROP TABLE IF EXISTS `courses`;
+CREATE TABLE IF NOT EXISTS `courses` (
+  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `detail` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `teacher_id` int NOT NULL,
+  `thumbnail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` double(8,2) NOT NULL DEFAULT '0.00',
+  `sale_price` double(8,2) NOT NULL DEFAULT '0.00',
+  `code` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `durations` double(8,2) NOT NULL DEFAULT '0.00',
+  `is_document` tinyint(1) NOT NULL DEFAULT '0',
+  `supports` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `courses`
+--
+
+INSERT INTO `courses` (`id`, `name`, `slug`, `detail`, `teacher_id`, `thumbnail`, `price`, `sale_price`, `code`, `durations`, `is_document`, `supports`, `status`, `created_at`, `updated_at`) VALUES
+(8, 'Laravel Online', 'laravel-online', '<p>zalo</p>', 1, '/storage/photos/shares/bien-vo-cuc-thai-binh-346.jpeg', 385000.00, 0.00, 'LaraOnl', 0.00, 1, '<p>mới</p>', 1, '2023-05-17 06:59:44', '2023-05-17 06:59:44');
 
 -- --------------------------------------------------------
 
@@ -67,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -76,7 +136,10 @@ CREATE TABLE IF NOT EXISTS `migrations` (
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
 (2, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(3, '2023_03_28_062451_creat_categories_table', 1);
+(3, '2023_03_28_062451_creat_categories_table', 1),
+(6, '2023_03_30_052714_create_courses_table', 2),
+(7, '2023_04_02_112902_create_categories_courses_table', 3),
+(8, '2023_04_14_052714_create_teachers_table', 4);
 
 -- --------------------------------------------------------
 
@@ -93,6 +156,33 @@ CREATE TABLE IF NOT EXISTS `personal_access_tokens` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `teachers`
+--
+
+DROP TABLE IF EXISTS `teachers`;
+CREATE TABLE IF NOT EXISTS `teachers` (
+  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `epx` double(8,2) NOT NULL DEFAULT '0.00',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `teachers`
+--
+
+INSERT INTO `teachers` (`id`, `name`, `slug`, `description`, `image`, `epx`, `created_at`, `updated_at`) VALUES
+(4, 'update name', 'update-name', '<p>kinh nghiệm trong lĩnh vực lập t&igrave;nh website</p>', '/storage/photos/shares/bien-vo-cuc-thai-binh-346.jpeg', 3.00, '2023-05-17 08:26:48', '2023-05-17 08:34:18'),
+(5, 'Đỗ Hùng Mạnh', 'do-hung-manh', '<p>&acirc;faf</p>', '/storage/photos/anh-gai-xinh-1.jpg', 12.00, '2023-05-17 09:00:24', '2023-05-17 09:00:47');
 
 -- --------------------------------------------------------
 
