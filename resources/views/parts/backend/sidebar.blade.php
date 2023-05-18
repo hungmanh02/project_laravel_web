@@ -52,42 +52,46 @@
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#usersLayouts" aria-expanded="false" aria-controls="usersLayouts">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                    Users
+                    Người dùng
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
                 <div class="collapse" id="usersLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{route('admin.users.create')}}">Add Users</a>
+                        <a class="nav-link" href="{{route('admin.users.index')}}">DS người dùng</a>
+                        <a class="nav-link" href="{{route('admin.users.create')}}">Thêm người dùng</a>
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#categoriesLayouts" aria-expanded="false" aria-controls="categoriesLayouts">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                    Categories
+                    Danh Mục
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
                 <div class="collapse" id="categoriesLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{route('admin.categories.create')}}">Add Categories</a>
+                        <a class="nav-link" href="{{route('admin.categories.index')}}">Ds danh mục</a>
+                        <a class="nav-link" href="{{route('admin.categories.create')}}">Thêm danh mục</a>
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#coursesLayouts" aria-expanded="false" aria-controls="coursesLayouts">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                    Courses
+                    Khóa Học
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
                 <div class="collapse" id="coursesLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{route('admin.courses.create')}}">Add Courses</a>
+                        <a class="nav-link" href="{{route('admin.courses.index')}}">DS khóa học</a>
+                        <a class="nav-link" href="{{route('admin.courses.create')}}">Thêm khóa học</a>
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#teachersLayouts" aria-expanded="false" aria-controls="teachersLayouts">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                    Teachers
+                    Giảng Viên
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
                 <div class="collapse" id="teachersLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{route('admin.teachers.create')}}">Add Teachers</a>
+                        <a class="nav-link" href="{{route('admin.teachers.index')}}">DS giảng viên</a>
+                        <a class="nav-link" href="{{route('admin.teachers.create')}}">Thêm giảng viên</a>
                     </nav>
                 </div>
                 <div class="sb-sidenav-menu-heading">Addons</div>
