@@ -442,6 +442,14 @@ Route::group(['prefix' => 'filemanager', 'middleware' => ['web']], function () {
 - thêm name vào value input trong function và thêm categories required
 
 
+### Xây dựng Modules quản lý khóa học
+
+### Xây dựng Modules Quản lý giảng viên
+
+### Thiết lập ràng buộc khóa học và giảng viên
+-- Ràng buộc khóa ngoại 
+=> Nếu giảng viên  bị xóa => Các khóa học  liên quan đến giảng viên sẽ bị xóa 
+-- Ràng buộc  hình ảnh
 
 
 
