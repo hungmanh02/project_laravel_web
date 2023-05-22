@@ -3,6 +3,7 @@ namespace Modules\Teachers\src\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\File;
 use Modules\Teachers\src\Http\Requests\TeachersRequest;
 use Modules\Teachers\src\Repositories\TeachersRepository;
 use Yajra\DataTables\Facades\DataTables;
@@ -69,8 +70,13 @@ class TeachersController extends Controller
         $this->teachersRepo->update($id,$teacher);
         return back()->with('msg',__('Teachers::messages.update.success'));
     }
-    public function delete($teacher){
-        $this->teachersRepo->delete($teacher);
+    public function delete($id){
+        $teacher=$this->teachersRepo->find($id);
+        $status=$this->teachersRepo->delete($id);
+        if($status){
+            $image=$teacher->image;
+            deleteFileStorage($image);
+        }
         return back()->with('msg',__('Teachers::messages.delete.success'));
     }
 

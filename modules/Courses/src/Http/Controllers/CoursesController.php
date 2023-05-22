@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Modules\Category\src\Repositories\CategoryRepository;
 use Modules\Courses\src\Http\Requests\CoursesRequest;
 use Modules\Courses\src\Repositories\CoursesRepository;
+use Modules\Teachers\src\Repositories\TeachersRepository;
 use Yajra\DataTables\Facades\DataTables;
 
 class CoursesController extends Controller
@@ -14,11 +15,13 @@ class CoursesController extends Controller
 
     protected $coursesRepo;
     protected $categoryRepo;
+    protected $teacherRepo;
 
-    public function __construct(CoursesRepository $coursesRepo,CategoryRepository $categoryRepo)
+    public function __construct(CoursesRepository $coursesRepo,CategoryRepository $categoryRepo, TeachersRepository $teacherRepo)
     {
         $this->coursesRepo=$coursesRepo;
         $this->categoryRepo=$categoryRepo;
+        $this->teacherRepo=$teacherRepo;
     }
 
     public function index()
@@ -66,8 +69,9 @@ class CoursesController extends Controller
     {
         $pageTitle="Thêm khóa học";
         $categories=$this->categoryRepo->getAllCategories();
-        // dd($categories);
-        return view('Courses::add',compact('pageTitle','categories'));
+        $teachers=$this->teacherRepo->getAllTeachers()->get();
+        // dd($teachers);
+        return view('Courses::add',compact('pageTitle','categories','teachers'));
     }
     public function store(CoursesRequest $request){
         $courses=$request->except(['_token']);
@@ -88,13 +92,13 @@ class CoursesController extends Controller
     public function edit($course){
         $course=$this->coursesRepo->find($course);
         $categoryIds=$this->coursesRepo->getRelatedCategories($course);
-        // dd($categoryIds);
+        $teachers=$this->teacherRepo->getAllTeachers()->get();
         if(!$course){
             abort(404);
         }
         $pageTitle="Sửa khóa học";
         $categories=$this->categoryRepo->getAllCategories();
-        return view('Courses::edit',compact('course','pageTitle','categories','categoryIds'));
+        return view('Courses::edit',compact('course','pageTitle','categories','categoryIds','teachers'));
     }
     public function update(CoursesRequest $request, $id){
         $course=$request->except('_token'); // loại bỏ token

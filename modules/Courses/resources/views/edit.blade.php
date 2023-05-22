@@ -19,7 +19,7 @@
         </div>
         <div class="col-6">
             <div class="mb-3">
-                <label for="">Tên</label>
+                <label for="">Đường link</label>
                 <input type="text" name="slug" value="{{ old('slug') ?? $course->slug}}" class="form-control slug @error('slug') is-invalid @enderror" id="" placeholder="Slug...">
                 @error('slug')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -30,9 +30,10 @@
             <div class="mb-3">
                 <label for="">Chọn giảng viên</label>
                 <select name="teacher_id" id="" class="form-select @error('teacher_id') is-invalid @enderror">
-                    <option value="0"{{ old('is_document')==0 ||$course->teacher_id==0? 'selected':false;}}>Chọn nhóm</option>
-                    <option value="1"{{ old('is_document')==1 ||$course->teacher_id==1? 'selected':false;}}>Hoàng An</option>
-                    <option value="2"{{ old('is_document')==2 ||$course->teacher_id==2? 'selected':false;}}>Hoàng Tâm</option>
+                    <option value="0">Chọn Giảng viên</option>
+                    @foreach ($teachers as $teacher)
+                    <option value="{{$teacher->id}}" {{ old('teacher_id')==$teacher->id || $course->teacher_id ==$teacher->id ? 'selected':false;}}>{{$teacher->name}}</option>
+                    @endforeach
                 </select>
                 @error('teacher_id')
                     <div class="invalid-feedback">{{ $message }}</div>

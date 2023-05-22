@@ -450,6 +450,8 @@ Route::group(['prefix' => 'filemanager', 'middleware' => ['web']], function () {
 -- Ràng buộc khóa ngoại 
 => Nếu giảng viên  bị xóa => Các khóa học  liên quan đến giảng viên sẽ bị xóa 
 -- Ràng buộc  hình ảnh
++ 1 hình ảnh sử dụng nhiều nơi => xóa 1 bản ghi => xóa ảnh
++ Tạo 1 modules Media (Database) => khi chọn ảnh ở các module => bật popup của module media
 
 
 
