@@ -452,6 +452,10 @@ Route::group(['prefix' => 'filemanager', 'middleware' => ['web']], function () {
 -- Ràng buộc  hình ảnh
 + 1 hình ảnh sử dụng nhiều nơi => xóa 1 bản ghi => xóa ảnh
 + Tạo 1 modules Media (Database) => khi chọn ảnh ở các module => bật popup của module media
+### thiết lập menu Item
+- tạo balde menu-item
+- check show từng menu
+- 
 
 
 
