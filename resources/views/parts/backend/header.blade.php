@@ -21,12 +21,11 @@
                 <li><a class="dropdown-item" href="#!">Tài khoản</a></li>
                 <li><hr class="dropdown-divider" /></li>
                 <li>
-                    <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">
+                    <a class="dropdown-item logout-action" href="{{route('logout')}}">
                     Đăng xuất
                     </a>
                 </li>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                <form  action="" method="POST" class="logout-form">
                     @csrf
                 </form>
             </ul>
