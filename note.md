@@ -92,7 +92,7 @@
 - created_at => timestamp
 - updated_at => timestamp
 
-5. Table teachers => Giảng viên
+5. Table teachers => Giảng viên (đã tạo)
 
 - id => int
 - name => varchar(100)
@@ -122,7 +122,7 @@
 - updated_at => timestamp
 
 
-8. Table category_posts => Quản lý danh mục tin tức
+8. Table category_posts => Quản lý danh mục tin tức (đã tạo)
 
 - id => int
 - name => varchar(200)
@@ -131,13 +131,13 @@
 - created_at => timestamp
 - updated_at => timestamp
 
-9. Table posts => Quản lý bài viết
+9. Table posts => Quản lý bài viết (đã tạo)
 
 - id => int
 - title => varchar(255)
 - slug => varchar(255)
 - content => text
-- exceprt => text
+- exceprt => text ('đoạn trích')
 - thumbnail => varchar(255)
 - category_post_id => int
 - created_at => timestamp

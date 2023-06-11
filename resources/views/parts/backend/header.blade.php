@@ -25,7 +25,7 @@
                     Đăng xuất
                     </a>
                 </li>
-                <form  action="" method="POST" class="logout-form">
+                <form  action="{{route('logout')}}" method="POST" class="logout-form">
                     @csrf
                 </form>
             </ul>

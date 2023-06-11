@@ -50,6 +50,14 @@
                     'title' =>'Người dùng',
                     'name' => 'users'
                     ])
+                @include('parts.backend.menu-item',[
+                    'title' =>'Danh mục bài viết',
+                    'name' => 'category-posts'
+                    ])
+                @include('parts.backend.menu-item',[
+                    'title' =>'Bài viết',
+                    'name' => 'posts'
+                    ])
             </div>
         </div>
         <div class="sb-sidenav-footer">
