@@ -50,4 +50,8 @@ class LoginController extends Controller
             $this->username() => [__('Auth::messages.login.failure')],
         ]);
     }
+    protected function loggedOut(Request $request)
+    {
+        return redirect($this->redirectTo);
+    }
 }

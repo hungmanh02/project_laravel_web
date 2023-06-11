@@ -20,7 +20,15 @@
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="#!">Tài khoản</a></li>
                 <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="#!">Đăng xuất</a></li>
+                <li>
+                    <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                    Đăng xuất
+                    </a>
+                </li>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
             </ul>
         </li>
     </ul>
