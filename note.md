@@ -456,7 +456,10 @@ Route::group(['prefix' => 'filemanager', 'middleware' => ['web']], function () {
 - tạo balde menu-item
 - check show từng menu
 - 
-
+### thiết lập Auth --bootstrap
+- composer require laravel/ui
+- php artisan ui bootstrap --auth
+- 
 
 
 

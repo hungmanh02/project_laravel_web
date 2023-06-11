@@ -46,7 +46,7 @@ class UsersController extends Controller
         return view('User::add',compact('pageTitle'));
     }
     public function store(UserRequest $request){
-        $this->userRepo->create([
+        $this->userRepo->createModule([
             'name'=>$request->name,
             'email'=>$request->email,
             'group_id'=>$request->group_id,
