@@ -58,6 +58,10 @@
                     'title' =>'Bài viết',
                     'name' => 'posts'
                     ])
+                @include('parts.backend.menu-item',[
+                    'title' =>'Tùy chọn',
+                    'name' => 'options'
+                    ])
             </div>
         </div>
         <div class="sb-sidenav-footer">

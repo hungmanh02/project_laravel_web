@@ -36,7 +36,7 @@ class PostController extends Controller
             return '<a href="'.route('admin.posts.edit',$course).'" class="btn btn-warning">Sửa</a>';
         })
         ->addColumn('delete',function($course) {
-            return '<a href="'.route('admin.posts.delete',$course).'" class="btn btn-danger delete-action">Xóa</a>';
+            return '<a href="'.route('admin.posts.delete',$course).'" class="btn btn-danger  delete-action">Xóa</a>';
         })
         ->editColumn('thumbnail', function($course) {
             return $course->thumbnail ? '<img src="'.$course->thumbnail.'" style="width:80px;"/>': '';

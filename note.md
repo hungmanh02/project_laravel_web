@@ -216,11 +216,13 @@
 - created_at => timestamp
 - updated_at => timestamp
 
-18. Table options => Quản lý các thiết lập
+18. Table options => Quản lý các thiết lập (đã tạo)
 
 - id => int
 - name => varchar(100)
 - value => text
+- created_at => timestamp
+- updated_at => timestamp
 
 ## Cài đặt Project và kết nối với Github
 
