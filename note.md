@@ -143,7 +143,7 @@
 - created_at => timestamp
 - updated_at => timestamp
 
-10. Table students => Quản lý học viên
+10. Table students => Quản lý học viên 
 
 - id => int
 - name => varchar(100)
@@ -199,7 +199,7 @@
 - created_at => timestamp
 - updated_at => timestamp
 
-16. Table groups => Quản trị nhóm người dùng
+16. Table groups => Quản trị nhóm người dùng (đã tạo)
 
 - id => int
 - name => varchar(100)

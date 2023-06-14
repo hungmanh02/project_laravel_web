@@ -10,6 +10,7 @@ class Course extends Model
 {
     use HasFactory;
     // những trường cần lấy
+    protected $table="courses";
     protected $fillable = [
         'id', 'name', 'slug', 'detail', 'teacher_id', 'thumbnail', 'price', 'sale_price', 'code', 'durations', 'is_document', 'supports', 'status'
     ];

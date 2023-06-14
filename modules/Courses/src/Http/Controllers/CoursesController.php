@@ -45,6 +45,9 @@ class CoursesController extends Controller
         ->editColumn('status', function($course) {
             return $course->status==1 ? '<button class="btn btn-success">Đã ra mắt</button>': '<button class="btn btn-warning">Chưa ra mắt</button>';
         })
+        ->editColumn('thumbnail', function($course) {
+            return $course->thumbnail ? '<img src="'.$course->thumbnail.'" style="width:80px;"/>': '';
+        })
         ->editColumn('price', function($course) {
             if($course->price){
                 if($course->sale_price){
@@ -60,8 +63,9 @@ class CoursesController extends Controller
 
             return $price;
         })
-        ->rawColumns(['edit', 'delete','status'])
+        ->rawColumns(['thumbnail','edit', 'delete','status'])
         ->toJson();
+        // dd($courses);
         return $courses;
 
     }
@@ -75,6 +79,7 @@ class CoursesController extends Controller
     }
     public function store(CoursesRequest $request){
         $courses=$request->except(['_token']);
+        // dd($courses);
         if(!$courses['sale_price']){
             $courses['sale_price']=0;
         }

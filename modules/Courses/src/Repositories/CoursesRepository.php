@@ -20,7 +20,7 @@ class CoursesRepository extends BaseRepository implements CoursesRepositoryInter
     // }
     //lấy dự sự dụng serve side
     public function getAllCourses(){
-        return $this->model->select(['id','name','price','sale_price','status','created_at'])->latest();
+        return $this->model->select(['id','name','thumbnail','price','sale_price','status','created_at'])->latest();
     }
     public function createCourseCategories($course,$data=[]){
         $course->categories()->attach($data);

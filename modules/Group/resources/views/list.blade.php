@@ -1,29 +1,27 @@
 @extends('layouts.backend')
-@section('title','Quản lý khóa học')
+@section('title','Quản lý nhóm')
 @section('content')
-<p><a href="{{route('admin.courses.create')}}" class="btn btn-primary">Thêm mới</a></p>
+<p><a href="{{route('admin.groups.create')}}" class="btn btn-primary">Thêm mới</a></p>
 @if (session('msg'))
 <div class="alert alert-success">{{ session('msg')}}</div>
 @endif
 <table id="datatable" class="table table-bordered">
     <thead>
         <tr>
-            <th>Hình</th>
             <th>Tên</th>
-            <th>Giá</th>
-            <th>Trạng thái</th>
+            <th>Người tạo</th>
             <th>Thời gian</th>
+            <th>Phân quyền</th>
             <th>Sửa</th>
             <th>Xóa</th>
         </tr>
     </thead>
     <tfoot>
         <tr>
-            <th>Hình</th>
             <th>Tên</th>
-            <th>Giá</th>
-            <th>Trạng thái</th>
+            <th>Người tạo</th>
             <th>Thời gian</th>
+            <th>Phân quyền</th>
             <th>Sửa</th>
             <th>Xóa</th>
         </tr>
@@ -38,13 +36,12 @@
                     {
                         processing: true,
                         serverSide: true,
-                        ajax: "{{route('admin.courses.data')}}",
+                        ajax: "{{route('admin.groups.data')}}",
                         "columns": [
-                            { "data": "thumbnail" },
                             { "data": "name" },
-                            { "data": "price" },
-                            { "data": "status" },
+                            { "data": "user_id" },
                             { "data": "created_at" },
+                            { "data": "permissions" },
                             { "data": "edit" },
                             { "data": "delete" },
                         ]

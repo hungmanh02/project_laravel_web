@@ -62,6 +62,10 @@
                     'title' =>'Tùy chọn',
                     'name' => 'options'
                     ])
+                @include('parts.backend.menu-item',[
+                    'title' =>'Nhóm',
+                    'name' => 'groups'
+                    ])
             </div>
         </div>
         <div class="sb-sidenav-footer">
