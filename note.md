@@ -234,6 +234,7 @@ composer create-project laravel/laravel
 - Tạo Repository
 - Kết nối với folder project trên máy tính
 - Push code lên Github
+- tạo model với migrate 1 lệnh: php artisan make:model Post -m
 
 ### Quy trinh update code len github
 - git add .
